@@ -8,7 +8,7 @@ import {
 } from "recharts";
 
 function App() {
-  const API = "http://localhost:5000";
+  const API = "https://budget-tracker-mmvz.onrender.com";
 
   const [transactions, setTransactions] = useState([]);
   const [budgets, setBudgets] = useState([]);
