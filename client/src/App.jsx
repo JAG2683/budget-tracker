@@ -102,7 +102,7 @@ function App() {
     .filter((t) => t.type === "expense")
     .reduce((sum, t) => sum + Number(t.amount), 0);
 
-  const remaining = monthlyNet - expenseTotal;
+  const remaining = Math.max(0, monthlyNet - expenseTotal);
 
   const pieData = (() => {
     const grouped = filteredTransactions
@@ -287,7 +287,9 @@ function App() {
         <div style={card}>
           <h2>Summary</h2>
           <p>Monthly Net: {format(monthlyNet)}</p>
-          <p>Remaining: {format(remaining)}</p>
+<p style={{ color: remaining > 0 ? "#22c55e" : "#ef4444" }}>
+  Remaining: {format(remaining)}
+</p>
         </div>
 
         {/* PIE */}
