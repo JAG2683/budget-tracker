@@ -338,7 +338,18 @@ function App() {
   filteredTransactions.map((t)=>(
     <div key={t.id} style={{display:"flex",justifyContent:"space-between"}}>
       {t.description} - {format(t.amount)} ({t.category})
-      <button onClick={()=>deleteTransaction(t.id)}>❌</button>
+      <button
+  onClick={() => deleteTransaction(t.id)}
+  style={{
+    background: "transparent",
+    border: "none",
+    color: "#ef4444",
+    cursor: "pointer",
+    fontSize: "16px"
+  }}
+>
+  ❌
+</button>
     </div>
   ))
 )}
