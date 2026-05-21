@@ -286,7 +286,11 @@ function App() {
         {/* SUMMARY */}
         <div style={card}>
           <h2>Summary</h2>
-          <p>Monthly Net: {format(monthlyNet)}</p>
+
+<p>Monthly Net: {format(monthlyNet)}</p>
+
+<p>Total Expenses: {format(expenseTotal)}</p>
+
 <p style={{ color: remaining > 0 ? "#22c55e" : "#ef4444" }}>
   Remaining: {format(remaining)}
 </p>
