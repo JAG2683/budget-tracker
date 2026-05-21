@@ -330,12 +330,18 @@ function App() {
         {/* LIST */}
         <div style={card}>
           <h2>Transactions</h2>
-          {filteredTransactions.map((t)=>(
-            <div key={t.id} style={{display:"flex",justifyContent:"space-between"}}>
-              {t.description} - {format(t.amount)} ({t.category})
-              <button onClick={()=>deleteTransaction(t.id)}>❌</button>
-            </div>
-          ))}
+          {filteredTransactions.length === 0 ? (
+  <p style={{ textAlign: "center", color: "#888" }}>
+    No transactions yet
+  </p>
+) : (
+  filteredTransactions.map((t)=>(
+    <div key={t.id} style={{display:"flex",justifyContent:"space-between"}}>
+      {t.description} - {format(t.amount)} ({t.category})
+      <button onClick={()=>deleteTransaction(t.id)}>❌</button>
+    </div>
+  ))
+)}
         </div>
       </div>
     </div>
