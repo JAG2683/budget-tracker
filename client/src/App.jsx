@@ -30,7 +30,11 @@ function App() {
   const [selectedMonth, setSelectedMonth] = useState("");
   const [selectedYear, setSelectedYear] = useState("");
 
-  const format = (num) => `$${Number(num || 0).toFixed(2)}`;
+  const format = (num) =>
+  new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(Number(num || 0));
 
   const getYearlyIncome = () => {
     const val = Number(salary);
