@@ -12,7 +12,7 @@ function App() {
 
   const [transactions, setTransactions] = useState([]);
   const [budgets, setBudgets] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("expense");
@@ -135,10 +135,12 @@ function App() {
   };
 
   const getTransactions = async () => {
-    const res = await fetch(`${API}/transactions`);
-    setTransactions(await res.json());
-  };
-
+  setLoading(true);
+  const res = await fetch(`${API}/transactions`);
+  const data = await res.json();
+  setTransactions(data);
+  setLoading(false);
+};
   const getBudgets = async () => {
     const res = await fetch(`${API}/budgets`);
     setBudgets(await res.json());
@@ -202,7 +204,9 @@ function App() {
     cursor: "pointer",
   };
 
-
+  if (loading) {
+  return <h2 style={{ textAlign: "center" }}>Loading...</h2>;
+}
   return (
     <div style={{ background: "#0f172a", minHeight: "100vh", color: "white", padding: "20px" }}>
       <div style={{ maxWidth: "700px", margin: "auto" }}>
